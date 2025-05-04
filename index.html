@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حطي اسمك يا روحيي &#10084;&#65039;</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background: #f8f0f8;
+            color: #4b0082;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .container {
+            background: #fff0f5;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 500px;
+        }
+
+        input, button {
+            padding: 10px;
+            font-size: 18px;
+            margin: 10px 0;
+            border: 2px solid #ff69b4;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #ff1493;
+            text-align: center;
+            line-height: 1.6;
+            opacity: 0; /* لإخفاء الرسالة في البداية */
+            animation: slideInRight 2s forwards; /* تطبيق التأثير */
+        }
+
+        .heart {
+            font-size: 50px;
+            color: red;
+        }
+
+        #error {
+            color: red;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        #loveMessage {
+            display: none;
+            opacity: 0;
+            animation: slideInRight 2s forwards; /* إضافة التأثير التدريجي */
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>حطي اسمك يا روحيي &#10084;&#65039;</h1>
+
+    <div class="container">
+        <input type="text" id="nameInput" placeholder="اكتب اسمك هنا" />
+        <button onclick="checkName()">اضغط هنا لتأكد من اسمك</button>
+        
+        <div id="error" style="display: none;"></div>
+        
+        <div id="message" style="display: none;">
+            <p class="heart">❤️</p>
+            <p id="loveMessage"></p>
+            <button onclick="showLoveMessage()">اضغطي يروحي</button>
+        </div>
+    </div>
+
+    <script>
+        // دالة للتحقق من الاسم المدخل
+        function checkName() {
+            const name = document.getElementById("nameInput").value.trim();
+
+            if (name !== "نوره") {
+                document.getElementById("error").innerHTML = "أنت لست الشخص المقصود، غادر.";
+                document.getElementById("error").style.display = "block";
+                document.getElementById("message").style.display = "none";
+            } else {
+                document.getElementById("error").style.display = "none";
+                document.getElementById("message").style.display = "block";
+            }
+        }
+
+        // دالة لعرض رسالة حب عشوائية عند الضغط على "اضغطي يروحي"
+        function showLoveMessage() {
+            const name = "نوره"; // لأننا نعلم أن الاسم هو "نوره"
+            const loveMessages = [
+                "يا أميرتي {name}، انتي سبب سعادتي وابتسامتي، حياتي أجمل بوجودك.",
+                "يا أميرتي {name}، عندما أتحدث عن الحب، يكون وجهك أول ما يظهر في ذهني.",
+                "يا أميرتي {name}، كل لحظة بدونك هي كالعمر بأسره، انتي كل ما أحتاجه.",
+                "يا أميرتي {name}، في عيونك أجد الأمل، وفي قلبك أجد الحب، أحبكِ.",
+                "يا أميرتي {name}، انتي الحلم الذي تحقق، انتي الحب الذي لا ينتهي.",
+                "يا أميرتي {name}، حبك في قلبي لا يموت، وكل يوم يزداد.",
+                "يا أميرتي {name}، لا أستطيع العيش بدونك، انتي نوري في هذه الحياة.",
+                "يا أميرتي {name}، وجودك في حياتي هو أكبر نعمة، أحبكِ.",
+                "يا أميرتي {name}، انتي مثل الورد الذي يزهر في قلبي كل يوم.",
+                "يا أميرتي {name}، كل كلمة حب أقولها لكِ ما هي إلا جزء صغير من مشاعري.",
+                "يا أميرتي {name}، انتي الأمل الذي يجعل حياتي أجمل وأجمل.",
+                "يا أميرتي {name}، وجودك في حياتي يضيء أيامي ويجعلني أكثر سعادة.",
+                "يا أميرتي {name}، كل لحظة معكِ هي كالأبد، أحبكِ بلا حدود.",
+                "يا أميرتي {name}، انتي أغلى من كل شيء في حياتي.",
+                "يا أميرتي {name}، في قلبك كل الحب، وفي عيونك كل السعادة.",
+                "يا أميرتي {name}، لا يوجد شيء في هذه الدنيا أجمل من رؤيتك مبتسمة.",
+                "يا أميرتي {name}، حياتي مليئة بكِ وانتي أجمل جزء فيها.",
+                "يا أميرتي {name}، عيونك هي التي تضيء دربي.",
+                "يا أميرتي {name}، مهما مر الوقت، انتي حبي الأول والأخير.",
+                "يا أميرتي {name}، حبك أضاء حياتي وأغرقني في بحر من السعادة.",
+                "يا أميرتي {name}، سأظل أحبكِ إلى الأبد، انتي أغلى ما في حياتي.",
+                "يا أميرتي {name}، لا أستطيع تخيل حياتي بدونكِ، أحبكِ أكثر من أي وقت مضى.",
+                "يا أميرتي {name}، أحتاجكِ بجانبي دائمًا، فأنتِ روحي وحياتي.",
+                "يا أميرتي {name}، قلبك هو المكان الذي أجد فيه الأمان والحب.",
+                "يا أميرتي {name}، في كل لحظة أعيشها معكِ أشعر بالسعادة الغامرة.",
+                "يا أميرتي {name}، انتي الجمال الذي يزين حياتي.",
+                "يا أميرتي {name}، كل شيء في حياتي أصبح أفضل بوجودكِ.",
+                "يا أميرتي {name}، أحبكِ أكثر مما تتخيلين، ولا أستطيع العيش بدونكِ.",
+                "يا أميرتي {name}، لا تقتصر حياتي على الوجود، بل تكتمل بوجودكِ في كل لحظة.",
+                "يا أميرتي {name}، انتي أمل كل صباح وسر سعادتي.",
+                "يا أميرتي {name}، أريد أن أكون لكِ إلى الأبد، فأنتِ كل شيء بالنسبة لي.",
+                "يا أميرتي {name}، مهما تحدثت عنكِ، لن تكفي الكلمات للتعبير عن مدى حبي لكِ."
+            ];
+
+            // اختيار رسالة حب عشوائية واستبدال {name} بالاسم المدخل
+            const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+            const finalMessage = randomMessage.replace("{name}", name);
+
+            // عرض الرسالة بعد الضغط على الزر
+            const loveMessageElement = document.getElementById("loveMessage");
+            loveMessageElement.innerHTML = finalMessage;
+            loveMessageElement.style.display = "block"; // عرض الرسالة
+            loveMessageElement.style.opacity = "1"; // التأكد من ظهور الرسالة بشكل تدريجي
+            loveMessageElement.classList.add("slideIn"); // تطبيق تأثير الحركة
+        }
+    </script>
+
+</body>
+</html>
